@@ -17,7 +17,21 @@ Can you do it in O(n) time and/or in-place with O(1) extra space?
 
 ```
 
-#ALGORITHM AND SOLUTION
+#USE SORTING (direct mechansim) O(nlogn)
+
+# class Solution(object):
+#     def wiggleSort(self, nums):
+#         """
+#         :type nums: List[int]
+#         :rtype: None Do not return anything, modify nums in-place instead.
+#         """
+#         N=len(nums)
+#         if N<2: return nums
+        
+#         nums.sort(reverse=True)        
+#         nums[::2],nums[1::2]=nums[N/2:],nums[:N/2]
+
+#ALGORITHM AND SOLUTION O(N) 
 
 ```
 Basic idea: we find median value, put numbers bigger than median into odd index, smaller than median into even index.
