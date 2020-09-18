@@ -29,3 +29,18 @@ class Solution(object):
             return pow(3, div)*leftover
         else:
             pow(3,div) 
+
+#DP APPROACH
+
+# class Solution(object):
+#     def integerBreak(self, n):
+#         dp_table = [0]*59
+#         dp_table[0] = 1
+#         for i in range(0,59):
+#             for j in range(1,10):
+#                 if i+j < 59:
+#                     dp_table[i+j] = max(dp_table[i]*j, dp_table[i+j])
+#                 else:
+#                     break
+#         dp_table[2], dp_table[3] = 1, 2
+#         return dp_table[n]
