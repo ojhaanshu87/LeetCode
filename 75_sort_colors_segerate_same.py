@@ -44,6 +44,23 @@ If nums[curr] = 2 : swap currth and p2th elements. Move pointer p2 to the left.
 If nums[curr] = 1 : move pointer curr to the right.
 
 ```
+"""
+NAIVE
+
+class Solution(object):
+    def sortColors(self, nums):
+        one_count = nums.count(1)
+        for elem in range(one_count):
+            nums.remove(1)
+            nums.append(1)
+        two_count = nums.count(2)
+        for elem in range(two_count):
+            nums.remove(2)
+            nums.append(2)
+        return nums
+"""
+
+
 class Solution:
     def sortColors(self, nums: List[int]) -> None:
         """
@@ -65,3 +82,4 @@ class Solution:
                 p2 -= 1
             else:
                 curr += 1
+        
