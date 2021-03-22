@@ -16,6 +16,17 @@ Constraints:
 1 <= arr1[i], arr2[i], arr3[i] <= 2000
 """
 
+# Hash Map Solution
+
+class Solution(object):
+    def arraysIntersection(self, arr1, arr2, arr3):
+        temp = collections.Counter(arr1 + arr2 + arr3)
+        res = []
+        for key, value in temp.iteritems():
+            if value == 3:
+                res.append(key)
+        return res
+
 #Algorithm
 
 #Initiate three pointers p1, p2, p3, and place them at the beginning of arr1, arr2, arr3 by initializing them to 0;
