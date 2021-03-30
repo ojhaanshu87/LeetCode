@@ -47,6 +47,24 @@ class Solution(object):
                 res.append(int(total*(nums[elem]**-1)))
             return res
 
+# prod_arr except nums[i] = prod_arr left of nums[i] * prod_arr to the right of nums[i]
+# left_prod[0] = 1
+# right_prod[n - 1] = 1
+# TC O(N) Space O(1)
+
+class Solution(object):
+    def productExceptSelf(self, nums):   
+        prod_without_self = [1] * len(nums)
+        # prod_without_self[i] as product of elements to the left of nums[i].
+        for i in range(1, len(nums)):
+            prod_without_self[i] = prod_without_self[i - 1] * nums[i - 1]
+        # prod_without_self[i] multiply product of elements to the right of nums[i].
+        right_prod = 1
+        for elem in range(len(nums) - 1, -1, -1):
+            prod_without_self[elem] *= right_prod
+            right_prod *= nums[elem]  
+        return prod_without_self
+     
 # Another Approach Algorithm
 
 #Initialize the empty answer array where for a given index i, answer[i] would contain the product of all the numbers to the left of i.
