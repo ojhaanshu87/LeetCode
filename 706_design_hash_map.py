@@ -89,3 +89,47 @@ class MyHashMap(object):
 # obj.put(key,value)
 # param_2 = obj.get(key)
 # obj.remove(key)
+
+
+# LINK LIST APPROACH
+
+class ListNode(object):
+    def __init__(self, key):
+        self.key = key
+        self.val = None
+        self.next = None
+
+class MyHashMap:
+    def __init__(self):
+        self.SIZE = 1000
+        self.hashing = [ListNode(-1) for _ in range(self.SIZE)]
+
+    def put(self, key, value):
+        head = self.hashing[key % self.SIZE]
+        current = head.next
+        while current:
+            if current.key == key: break
+            current = current.next
+        else:
+            current = ListNode(key)
+            current.next = head.next
+            head.next = current
+        current.val = value
+
+    def get(self, key):
+        current = self.hashing[key % self.SIZE].next
+        while current:
+            if current.key == key: break
+            current = current.next
+        else:
+            return -1
+        return current.val
+
+    def remove(self, key):
+        current = self.hashing[key % self.SIZE]
+        while current and current.next:
+            if current.next.key == key: break
+            current = current.next
+        else:
+            return None
+        current.next = current.next.next
