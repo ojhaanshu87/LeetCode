@@ -50,3 +50,20 @@ class Solution(object):
                 ptr_n1 += 1
                 ptr_n2 += 1
         return res
+
+# What if Duplicates allowed in result
+class Solution(object):
+    def intersect(self, nums1, nums2):
+        nums1.sort()
+        nums2.sort()
+        ptr1, ptr2, res = 0, 0, []
+        while ptr1 < len(nums1) and ptr2 < len(nums2):
+            if nums1[ptr1] < nums2[ptr2]:
+                ptr1 += 1
+            elif nums1[ptr1] > nums2[ptr2]:
+                ptr2 += 1
+            else:
+                res.append(nums1[ptr1])
+                ptr1 += 1
+                ptr2 += 1
+        return res
