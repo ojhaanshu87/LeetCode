@@ -28,3 +28,25 @@ class Solution(object):
                     ans.append(num)
         # if remove set from below then return all elem irrespective of duplications 
         return set(ans)
+    
+    
+# MEthod 2 O(NLOGN) TC sorting and Constant Space (O(1))
+
+class Solution(object):
+    def intersection(self, nums1, nums2):
+        res = []
+        nums1.sort()
+        nums2.sort()
+        print nums1, nums2
+        ptr_n1, ptr_n2 = 0, 0
+        while ptr_n1 < len(nums1) and ptr_n2 < len(nums2):
+            if nums1[ptr_n1] < nums2[ptr_n2]:
+                ptr_n1 += 1
+            elif nums1[ptr_n1] > nums2[ptr_n2]:
+                ptr_n2 += 1
+            else:
+                if nums1[ptr_n1] not in res:
+                    res.append(nums1[ptr_n1])
+                ptr_n1 += 1
+                ptr_n2 += 1
+        return res
