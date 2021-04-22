@@ -27,6 +27,36 @@ Input: s = "abc3[cd]xyz"
 Output: "abccdcdcdxyz"
 
 ```
+#################################################################
+
+# Method 1 
+
+class Solution(object):
+    def decodeString(self, s):
+        temp = []
+        all_nums = set("0123456789")
+        res, num = '', ''
+        for char in s:
+            if char in all_nums:
+                num += char
+                
+            elif char == '[':
+                temp.append((res, int(num)))
+                res, num = '', ''
+                
+            elif char == ']':
+                prev, repeat = temp.pop()
+                res = prev + res * repeat
+                
+            else:
+                res += char
+                
+        return res
+        
+
+#################################################################
+
+# Method 2 
 
 class Solution(object):
     def decodeString(self, s):
