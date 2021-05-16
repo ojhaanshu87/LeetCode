@@ -29,8 +29,21 @@ All the integers of nums1 also appear in nums2.
 
 Follow up: Could you find an O(nums1.length + nums2.length) solution?
 '''
-# Map and Stack Solution
 
+
+# O(len(nums1) + len(nums2))
+class Solution(object):
+    def nextGreaterElement(self, nums1, nums2):
+        # O( len(nums1) + len(nums2) )
+        dic = dict()
+        stack = [nums2[0]]
+        for x in nums2[1:]:
+            while  stack and x > stack[-1] :
+                dic[stack.pop()] = x
+            stack.append(x)  
+        return [dic[i] if i in dic.keys() else -1 for i in nums1]
+
+# Map and Stack Solution
 class Solution(object):
     def nextGreaterElement(self, nums1, nums2):
         result_dict = {}
