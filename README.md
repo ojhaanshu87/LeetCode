@@ -1,2 +1,2 @@
 # LeetCode
-Leet code easy and mediup problems
+Leet code easy and medium problems
